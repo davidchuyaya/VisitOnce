@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "Once",
+  "version": "1.0",
+
+  "description": "This extension limits the number of visits to selected sites on a daily basis.",
+  "permissions": [
+    "activeTab",
+	"idle",
+    "storage"
+  ],
+
+  "browser_action": {
+    "default_title": "yee!",
+    "default_popup": "popup.html"
+  },
+
+  "background": {
+	"persistent": false,
+	"scripts": ["background.js"]
+  }
+}
