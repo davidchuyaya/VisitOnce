@@ -19,7 +19,7 @@ function blockPage()
 		if (urls === undefined)
 			return;
 
-		var domain = document.domain;
+		var domain = window.location.hostname;
 		if (!urls.includes(domain))
 			return;
 
