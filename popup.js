@@ -1,8 +1,8 @@
 /**
- * Gets the URL of the current tab
+ * Gets the domain name of the URL of the current tab
  * @param {function(string)} callback Called when the URL is found
  */
-function getUrl(callback) {
+function getDomain(callback) {
 	// Query filter to be passed to chrome.tabs.query - see
 	// https://developer.chrome.com/extensions/tabs#method-query
 	var queryInfo = {
@@ -12,15 +12,32 @@ function getUrl(callback) {
 
 	chrome.tabs.query(queryInfo, (tabs) => {
 		var tab = tabs[0];
-		callback(tab.url);
+		var url = new URL(tab.url);
+		callback(url.hostname);
 	});
 }
 
+/**
+ * Listen for clicks on blockButton. Once the button is clicked, add the url domain to the stored array.
+ */
 document.addEventListener('DOMContentLoaded', () => {
-	getUrl((url) => {
+	getDomain((domain) => {
 		var blockButton = document.getElementById('blockButton');
 		blockButton.addEventListener('click', () => {
-			blockButton.textContent = url;
+			blockButton.textContent = domain;
+
+			//save the url
+			chrome.storage.sync.get("urls", (items) => {
+				var urls = items.urls;
+
+				//the url array is null
+				if (urls === undefined)
+					urls = [domain];
+				else
+					urls.push(domain);
+
+				chrome.storage.sync.set({"urls": urls});
+			});
 		});
 	});
 });

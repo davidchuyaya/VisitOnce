@@ -5,7 +5,7 @@
 
   "description": "This extension limits the number of visits to selected sites on a daily basis.",
   "permissions": [
-    "activeTab",
+    "tabs",
 	"idle",
     "storage"
   ],
