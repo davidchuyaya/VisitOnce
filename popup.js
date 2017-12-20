@@ -33,8 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
 				//the url array is null
 				if (urls === undefined)
 					urls = [domain];
+				else if (urls.includes(domain)) //don't save the same domain twice
+					return;
 				else
 					urls.push(domain);
+				console.log("new urls: " + urls);
 
 				chrome.storage.sync.set({"urls": urls});
 			});
