@@ -3,14 +3,8 @@
  * @param {function(string)} callback Called when the URL is found
  */
 function getDomain(callback) {
-	// Query filter to be passed to chrome.tabs.query - see
-	// https://developer.chrome.com/extensions/tabs#method-query
-	var queryInfo = {
-		active: true,
-		currentWindow: true
-	};
 
-	chrome.tabs.query(queryInfo, (tabs) => {
+	chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
 		var tab = tabs[0];
 		var url = new URL(tab.url);
 		callback(url.hostname);
