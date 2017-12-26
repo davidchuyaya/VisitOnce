@@ -18,7 +18,16 @@ document.addEventListener('DOMContentLoaded', () => {
 	getDomain((domain) => {
 		var blockButton = document.getElementById('blockButton');
 		blockButton.addEventListener('click', () => {
-			blockButton.textContent = domain;
+
+			//set icon so user knows this website is blocked
+			//NOTE: This code resembles
+			chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
+				chrome.browserAction.setIcon({path: {
+						"16": "Resources/blocked1-16.png",
+						"48": "Resources/blocked1-48.png",
+						"128": "Resources/blocked1-128.png"
+					}, tabId: tabs[0].id});
+			});
 
 			//save the url
 			chrome.storage.sync.get("urls", (items) => {

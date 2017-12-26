@@ -2,13 +2,11 @@ var tabURLs = {};
 
 /**
  * Keep track of the URLs of the tabs that are opened/updated so we'll have an accurate one once it closes.
- * Then execute a script on the new page to change the content if necessary.
  */
 chrome.tabs.onUpdated.addListener((tabId, change, tab) => {
 	if (tab.url in tabURLs)
 		return;
 	tabURLs[tabId] = tab.url;
-	chrome.tabs.executeScript(tabId, {file: "content_script.js"});
 });
 /**
  * If the tab closed is on the user's list of block domains and the tab closed the the last one of that domain,
@@ -41,5 +39,13 @@ chrome.tabs.onRemoved.addListener((tabId, info) => {
 			//store the day of month when this domain was last closed
 			chrome.storage.sync.set({[domain]:date.getDate()});
 		});
+	});
+});
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+	var iconPaths = request.icon;
+	chrome.browserAction.setIcon({
+		path: iconPaths,
+		tabId: sender.tab.id
 	});
 });
