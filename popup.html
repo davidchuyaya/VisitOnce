@@ -8,9 +8,29 @@
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.red-teal.min.css">
 	<!-- Material Design icon font -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     <title>Once's popup</title>
+	<style>
+		body
+		{
+			float: left;
+			text-align: center;
+		}
+		.mdl-button
+		{
+			margin-bottom: 16px;
+		}
+		#urlText, #blockButton, #optionsButton
+		{
+			margin-left: 16px;
+			margin-right: 16px;
+		}
+	</style>
 </head>
 <body>
+<h5>Once</h5>
+<h6 id="urlText"></h6>
 <button id="blockButton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Block</button>
+<button id="optionsButton" class="mdl-button mdl-js-button mdl-js-ripple-effect">Options</button>
 </body>
 </html>
