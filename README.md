@@ -8,12 +8,12 @@ Made with the typical web stuff (HTML, CSS, Javascript) using IntelliJ IDEA. The
 How it works
 -----
 <p>
-Every time you **close** or **update** a tab, <code>background.js</code> executes in the browser's background. If the tab you just left is on the list of blocked sites **and** no other tabs of the same domain name are open, then today's date is recorded. This is a record of the date on which you last visited this site. If other tabs with the same domain name are open, we assume you're not *done* using the site.
+Every time you <b>close</b> or <b>update</b> a tab, <code>background.js</code> executes in the browser's background. If the tab you just left is on the list of blocked sites <b>and</b> no other tabs of the same domain name are open, then today's date is recorded. This is a record of the date on which you last visited this site. If other tabs with the same domain name are open, we assume you're not *done* using the site.
 </p>
 
 <p>
 Every time a tab is opened, <code>content_script.js</code> executes within the page.
-If the tab is blocked **and** the saved date corresponding to its domain is today, then the page is erased and replaced with a message signaling that the page is blocked. The indicator icon for the extension is changed accordingly, depending on whether the site is blocked and whether you've visited it yet today.
+If the tab is blocked <b>and</b> the saved date corresponding to its domain is today, then the page is erased and replaced with a message signaling that the page is blocked. The indicator icon for the extension is changed accordingly, depending on whether the site is blocked and whether you've visited it yet today.
 Any tab opened in incognito is blocked by default, assuming the extension is allowed in incognito mode.
 </p>
 
