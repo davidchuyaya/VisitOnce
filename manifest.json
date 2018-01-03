@@ -23,7 +23,7 @@
 
   "background": {
 	"persistent": false,
-	"scripts": ["background.js"]
+	"scripts": ["shared.js","background.js"]
   },
 
   "content_scripts": [{
