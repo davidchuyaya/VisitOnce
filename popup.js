@@ -6,11 +6,11 @@ document.addEventListener('DOMContentLoaded', () =>
 	getDomain((domain) =>
 	{
 		//url text
-		var urlText = document.getElementById('urlText');
+		let urlText = document.getElementById('urlText');
 		urlText.textContent = domain;
 
 		//block button
-		var blockButton = document.getElementById('blockButton');
+		let blockButton = document.getElementById('blockButton');
 
 		blockButton.addEventListener('click', () =>
 		{
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () =>
 		});
 
 			//options button
-		var optionsButton = document.getElementById("optionsButton");
+		let optionsButton = document.getElementById("optionsButton");
 		optionsButton.addEventListener('click', () =>
 		{
 			chrome.tabs.create({active: true, url: "options.html"});

@@ -1,12 +1,12 @@
 //dictionary of tabId to URL
-var tabURLs = {};
+let tabURLs = {};
 
 /**
  * Keep track of the URLs of the tabs that are opened/updated so we'll have an accurate one once it closes.
  */
 chrome.tabs.onUpdated.addListener((tabId, change, tab) => {
-	var oldDomain = tabURLs[tabId];
-	var newDomain = (new URL(tab.url)).hostname;
+	let oldDomain = tabURLs[tabId];
+	let newDomain = (new URL(tab.url)).hostname;
 	//the page was updated to a different page
 	if (oldDomain !== undefined && oldDomain !== newDomain)
 		tryBlockPage(oldDomain);
@@ -21,7 +21,7 @@ chrome.tabs.onUpdated.addListener((tabId, change, tab) => {
  * `onCreated` will check the date of the saved domain to decide whether or not to block the site.
  */
 chrome.tabs.onRemoved.addListener((tabId, info) => {
-	var url = tabURLs[tabId];
+	let url = tabURLs[tabId];
 	if (url !== undefined)
 		tryBlockPage(url);
 });
@@ -31,7 +31,7 @@ chrome.tabs.onRemoved.addListener((tabId, info) => {
  * from content_script.js
  */
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-	var iconPaths = request.icon;
+	let iconPaths = request.icon;
 	chrome.browserAction.setIcon({
 		path: iconPaths,
 		tabId: sender.tab.id

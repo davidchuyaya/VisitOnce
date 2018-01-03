@@ -4,6 +4,13 @@
 function clearPage()
 {
 	document.getElementsByTagName("html")[0].innerHTML = "";
+
+	document.title = "Page blocked";
+	let div = document.createElement("div");
+	div.appendChild(document.createTextNode("You've visited this page once today."));
+
+	let body = document.body;
+	body.appendChild(div);
 }
 
 /**
@@ -59,28 +66,28 @@ function setIconPageBlocked()
 		return true;
 	}
 
-	chrome.storage.sync.get("urls", (items) => {
-		var urls = items.urls;
+	getBlockedPages((urls) =>
+	{
 		if (urls === undefined) {
 			setIconUnblocked();
 			return;
 		}
 
-		var domain = window.location.hostname;
+		let domain = window.location.hostname;
 		if (!urls.includes(domain)) {
 			setIconUnblocked();
 			return;
 		}
 
-		chrome.storage.sync.get(domain, (items2) => {
-			var date = items2[domain];
+		chrome.storage.sync.get(domain, (items) => {
+			let date = items[domain];
 			//this page has yet to be opened (ever)
 			if (date === undefined) {
 				setIconBlocked1();
 				return;
 			}
 
-			var today = (new Date).getDate();
+			let today = (new Date).getDate();
 			//block the page if you've used it already today
 			if (date === today) {
 				setIconBlocked0();
