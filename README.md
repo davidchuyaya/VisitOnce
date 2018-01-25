@@ -3,7 +3,7 @@
 Once
 =====
 A chrome extension that limits blocked sites to 1 visit per day.  
-Made with the typical web stuff (HTML, CSS, Javascript) using IntelliJ IDEA. The images were made with GIMP. Try it out for yourself [here](https://chrome.google.com/webstore/detail/koibjjcabhgmipfagkmaccgjkcokolbn/publish-accepted?hl=en).
+Made with the typical web stuff (HTML, CSS, Javascript) using IntelliJ IDEA. The images were made with GIMP. Try it out for yourself [here](https://chrome.google.com/webstore/detail/koibjjcabhgmipfagkmaccgjkcokolbn).
 
 How it works
 -----
